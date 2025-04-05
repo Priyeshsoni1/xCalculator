@@ -78,14 +78,16 @@ const Calculator = () => {
             return (
               <button
                 key={item.id}
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
+                  console.log(showResult, item.Symbol, "clcik");
                   if (showResult) setShowResult(false);
                   let val = item.Symbol;
                   if (val === "=" || val === "C") {
                     if (val == "C") handleClear();
                     else handleResult();
                   } else {
-                    setInput((prev) => setInput(prev + val));
+                    setInput((prev) => prev + val);
                   }
                 }}
                 style={{
